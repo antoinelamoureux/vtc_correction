@@ -5,8 +5,14 @@ require_once "./Controlleurs/ConducteurController.php";
 
 $conducteur = new ConducteurController();
 
-$conducteur->nouveauConducteur();
 
-$conducteur->listConducteur();
+if (isset($_GET['action'])) {
+    if($_GET['action'] == 'modifierConducteur') {
+        $conducteur->show($_GET['conducteurId']);
+    }
+} else {
+    $conducteur->listConducteur();
+    $conducteur->nouveauConducteur();
+}
 
 ?>

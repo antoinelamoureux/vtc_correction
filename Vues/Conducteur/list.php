@@ -1,3 +1,4 @@
+<div class="container">
 <table class="table">
   <thead>
     <tr>
@@ -14,10 +15,11 @@
           echo "<td>".$conducteur->getId()."</td>";
           echo "<td>".$conducteur->getPrenom()."</td>";
           echo "<td>".$conducteur->getNom()."</td>";
-          echo "<td><img src='./Ressources/icons/edit.png' width=20px'>&nbsp;&nbsp;<img src='./Ressources/icons/delete.png' width='20px'</td>";
+          echo "<td><a href='?action=modifierConducteur&conducteurId=".$conducteur->getId()."'><img src='./Ressources/icons/edit.png' width=20px'></a>&nbsp;&nbsp;<img src='./Ressources/icons/delete.png' width='20px'></td>";
           echo "</tr>";
 
       }
       ?>
   </tbody>
 </table>
+</div>
