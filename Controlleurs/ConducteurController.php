@@ -47,4 +47,10 @@ public function show($id)
         }
         }
 }
+
+public function delete($id)
+{
+    $conducteur = new Conducteur();
+    return $conducteur->deleteById($id, 'conducteur');
+}
 }
