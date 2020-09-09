@@ -15,5 +15,15 @@ class ConducteurController {
             $conducteur->create($prenom, $nom);
         }
 }
+
+public function listConducteur()
+{
+   $liste_des_conducteurs = new Conducteur();
+
+   /* Appel de mon model pour afficher la liste des conducteurs */
+
+   $tous_les_conducteurs = $liste_des_conducteurs->findAll('drivers');
+
+   require_once './Vues/Conducteur/list.php';
 }
-?>
+}

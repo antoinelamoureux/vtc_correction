@@ -1,19 +1,20 @@
 <?php
 require_once 'Model.php';
 
-class Conducteur extends Model {
+class Conducteur extends Model
+{
     private $id_conducteur;
     private $prenom;
     private $nom;
 
-    public function getIdConducteur()
+    public function getId()
     {
         return $this->id_conducteur;
     }
 
     /**
      * Get the value of prenom
-     */ 
+     */
     public function getPrenom()
     {
         return $this->prenom;
@@ -23,7 +24,7 @@ class Conducteur extends Model {
      * Set the value of prenom
      *
      * @return  self
-     */ 
+     */
     public function setPrenom($prenom)
     {
         return $this->prenom = $prenom;
@@ -31,7 +32,7 @@ class Conducteur extends Model {
 
     /**
      * Get the value of nom
-     */ 
+     */
     public function getNom()
     {
         return $this->nom;
@@ -41,20 +42,29 @@ class Conducteur extends Model {
      * Set the value of nom
      *
      * @return  self
-     */ 
+     */
     public function setNom($nom)
     {
-       return $this->nom = $nom;
+        return $this->nom = $nom;
     }
 
     public function create($prenom, $nom)
     {
-        
         $bdd = Model::getConnection();
 
         $requete = $bdd->prepare("INSERT INTO drivers (nom, prenom) VALUES ('$nom', '$prenom')");
-        var_dump($requete);
-        die;
     }
 
+    public function findAll($table)
+    {
+        $bdd = Model::getConnection();
+
+        $sql = $bdd->prepare("SELECT * FROM $table");
+
+        $sql->execute();
+
+        $resultat = $sql->fetchAll(PDO::FETCH_CLASS, 'conducteur');
+
+        return $resultat;
+    }
 }

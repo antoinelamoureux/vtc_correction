@@ -7,4 +7,6 @@ $conducteur = new ConducteurController();
 
 $conducteur->nouveauConducteur();
 
+$conducteur->listConducteur();
+
 ?>
