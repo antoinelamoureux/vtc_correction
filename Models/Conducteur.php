@@ -52,7 +52,7 @@ class Conducteur extends Model
     {
         $bdd = Model::getConnection();
 
-        $requete = $bdd->prepare("INSERT INTO drivers (nom, prenom) VALUES ('$nom', '$prenom')");
+        $requete = $bdd->prepare("INSERT INTO conducteur (nom, prenom) VALUES ('$nom', '$prenom')");
     }
 
     public function findAll($table)
@@ -60,6 +60,20 @@ class Conducteur extends Model
         $bdd = Model::getConnection();
 
         $sql = $bdd->prepare("SELECT * FROM $table");
+
+        $sql->execute();
+
+        $resultat = $sql->fetchAll(PDO::FETCH_CLASS, 'conducteur');
+
+        return $resultat;
+    }
+
+    public function update($id, $prenom, $nom)
+    {
+        $bdd = Model::getConnection();
+
+        $sql = $bdd->prepare("UPDATE conducteur SET prenom='".$prenom."', nom='".$nom."' WHERE id_conducteur =".$id);
+        var_dump($sql);
 
         $sql->execute();
 
